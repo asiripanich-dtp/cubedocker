@@ -8,8 +8,8 @@ SHELL ["powershell", "-command", "$ErrorActionPreference = 'Stop'; $ProgressPref
 WORKDIR C:/work_folder
 
 # Copy required files into the container
-COPY installers/Setup_CUBE_x64_06.05.01.00.exe cube_setup.exe
-COPY installers/Setup_CONNECTIONClientx64_23.00.00.10.exe connection_client_setup.exe 
+RUN Invoke-WebRequest 'https://drive.google.com/uc?export=download&id=13CEy3smPFMKFPkWmMPzBDTJQZl1IMgL9&confirm=t' -OutFile cube_setup.exe
+RUN Invoke-WebRequest 'https://drive.google.com/uc?export=download&id=1C6sX29ade5ZCsH-28z0evgDzhyLRTJnl&confirm=t' -OutFile connection_client_setup.exe
 COPY powershell/set_env.ps1 set_env.ps1
 COPY powershell/conn_client_logon_script.ps1 conn_client_logon_script.ps1
 
