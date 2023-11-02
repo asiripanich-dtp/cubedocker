@@ -1,0 +1,12 @@
+FROM amarindtp/cubebase
+
+# download and install conda
+RUN certutil -urlcache -split -f https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Windows-x86_64.exe Miniforge3-Windows-x86_64.exe 
+
+# Install Conda silently
+RUN Start-Process -FilePath 'Miniforge3-Windows-x86_64.exe' -ArgumentList '/S', 'InstallationType=JustMe', 'RegisterPython=0', 'D=%UserProfile%\Miniforge3' -Wait
+
+# Remove the installer files
+# RUN Remove-Item Miniforge3-Windows-x86_64.exe
+
+# RUN %UserProfile%\Miniforge3\_conda.exe create -n vitmtools python=3.9 -y
